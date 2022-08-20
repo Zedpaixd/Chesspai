@@ -88,11 +88,28 @@ typedef struct {
 
 #define nl(i) for (int x = 0; x < i; x++) printf("\n");
 #define FR_TO_SQUARE(f,r) ( (21 + (f) ) + ( (r) * 10 ) ) 
+#define POP(bit) pop(bit)
+#define BIT_COUNT(bit) countBits(bit)
+#define CLEAR_BIT(board,square) ((board) &= clearMask[(square)])
+#define SET_BIT(board,square) ((board) |= setMask[(square)])
 
 extern int BASE_M_TO_64[BOARD_SQRS];
 extern int BASE_64_TO_M[64];
+extern UNS64 setMask[64];
+extern UNS64 clearMask[64];
+extern UNS64 PieceKeys[13][120];
+extern UNS64 SideKey;
+extern UNS64 CastleKeys[16];
 
+// initialization.c
 extern void init_all();
+
+// board.c
 extern void printBoard(UNS64 board);
+extern int pop(UNS64 *bit);
+extern int countBits(UNS64 bit);
+
+// hash.c
+extern UNS64 GeneratePositionKey(const BOARD_STRUCT *pos);
 
 #endif
