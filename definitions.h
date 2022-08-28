@@ -24,6 +24,7 @@ typedef unsigned long long UNS64;
 
 #define MAXMOVES 2048
 
+#define START_FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
 enum { EMPTY, WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK};
 enum { FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_NONE };
@@ -39,7 +40,7 @@ enum {
   A5 = 61, B5, C5, D5, E5, F5, G5, H5,
   A6 = 71, B6, C6, D6, E6, F6, G6, H6,
   A7 = 81, B7, C7, D7, E7, F7, G7, H7,
-  A8 = 91, B8, C8, D8, E8, F8, G8, H8, NO_SQ
+  A8 = 91, B8, C8, D8, E8, F8, G8, H8, NO_SQ, OFFBOARD
 };
 
 enum { FALSE, TRUE };
@@ -86,6 +87,8 @@ typedef struct {
 
 } BOARD_STRUCT;
 
+// sq64   basemto64
+// sq120  base64tom
 #define nl(i) for (int x = 0; x < i; x++) printf("\n");
 #define FR_TO_SQUARE(f,r) ( (21 + (f) ) + ( (r) * 10 ) ) 
 #define POP(bit) pop(bit)
@@ -111,5 +114,8 @@ extern int countBits(UNS64 bit);
 
 // hash.c
 extern UNS64 GeneratePositionKey(const BOARD_STRUCT *pos);
+
+//gameBoard.c
+extern void reset_Board(BOARD_STRUCT *board);
 
 #endif
