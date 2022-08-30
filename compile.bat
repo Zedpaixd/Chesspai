@@ -1,1 +1,1 @@
-gcc chesspai.c initialization.c boards.c hash.c gameBoard.c -o chess
+gcc chesspai.c initialization.c boards.c hash.c gameBoard.c -o Chesspai
